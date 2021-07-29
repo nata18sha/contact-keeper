@@ -1,4 +1,5 @@
 {
     "_comment": "file with global variables",
-    "mongoURI": "mongodb+srv://natasha123:natasha*123@contactkeeper.lvmox.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+    "mongoURI": "mongodb+srv://natasha123:natasha*123@contactkeeper.lvmox.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    "jwtSecret": "secret"
 }
