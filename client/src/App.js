@@ -5,28 +5,31 @@ import Home from './components/pages/Home';
 import About from './components/pages/About';
 
 import ContactState from './context/contact/ContactState';
+import AuthState from './context/auth/AuthState';
 import './App.css';
 
 const App = () => {
-	return (
-		<ContactState>
-			<Router>
-				<Fragment>
-					<Navbar />
-					<div className="container">
-						<Switch>
-							<Route exact path="/">
-								<Home />
-							</Route>
-							<Route exact path="/about">
-								<About />
-							</Route>
-						</Switch>
-					</div>
-				</Fragment>
-			</Router>
-		</ContactState>
-	);
+    return (
+        <AuthState>
+            <ContactState>
+                <Router>
+                    <Fragment>
+                        <Navbar />
+                        <div className="container">
+                            <Switch>
+                                <Route exact path="/">
+                                    <Home />
+                                </Route>
+                                <Route exact path="/about">
+                                    <About />
+                                </Route>
+                            </Switch>
+                        </div>
+                    </Fragment>
+                </Router>
+            </ContactState>
+        </AuthState>
+    );
 };
 
 export default App;
