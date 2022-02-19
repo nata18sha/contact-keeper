@@ -1,6 +1,7 @@
 import {
     ADD_CONTACT,
     DELETE_CONTACT,
+    CONTACT_ERROR,
     SET_CURRENT,
     CLEAR_CURRENT,
     UPDATE_CONTACT,
@@ -18,7 +19,7 @@ const contactReducer = (state, action) => {
         case UPDATE_CONTACT:
             return {
                 ...state,
-                contacts: state.contacts.map((contact) =>
+                contacts: state.contacts.map(contact =>
                     contact.id === action.payload.id ? action.payload : contact
                 ),
             };
@@ -26,7 +27,7 @@ const contactReducer = (state, action) => {
             return {
                 ...state,
                 contacts: state.contacts.filter(
-                    (contact) => contact.id !== action.payload
+                    contact => contact.id !== action.payload
                 ),
             };
         case SET_CURRENT:
@@ -42,7 +43,7 @@ const contactReducer = (state, action) => {
         case FILTER_CONTACTS:
             return {
                 ...state,
-                filtered: state.contacts.filter((contact) => {
+                filtered: state.contacts.filter(contact => {
                     const regexp = new RegExp(`${action.payload}`, 'gi');
                     return (
                         contact.name.match(regexp) ||
@@ -55,6 +56,8 @@ const contactReducer = (state, action) => {
                 ...state,
                 filtered: null,
             };
+        case CONTACT_ERROR:
+            return { ...state, error: action.payload };
         default:
             return state;
     }
